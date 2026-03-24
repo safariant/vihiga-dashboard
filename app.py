@@ -29,10 +29,12 @@ slope = ee.Terrain.slope(dem)
 
 # NDVI
 
-s2 = ee.ImageCollection("COPERNICUS/S2_SR_HARMONIZED") 
-.filterBounds(AOI) 
-.filterDate('2026-01-01', '2026-03-20') 
-.median()
+s2 = (
+    ee.ImageCollection("COPERNICUS/S2_SR_HARMONIZED")
+    .filterBounds(AOI)
+    .filterDate('2026-01-01', '2026-03-20')
+    .median()
+)
 
 ndvi = s2.normalizedDifference(['B8', 'B4'])
 
